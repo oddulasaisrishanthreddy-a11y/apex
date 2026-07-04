@@ -1,0 +1,155 @@
+openapi: 3.0.0
+info:
+  title: Apex E-Commerce API (partial)
+  version: '1.0'
+paths:
+  /api/auth/register:
+    post:
+      summary: Register new user (returns OTP flow)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name: { type: string }
+                email: { type: string }
+                password: { type: string }
+      responses:
+        '200':
+          description: OTP dispatched response
+
+  /api/auth/login:
+    post:
+      summary: Login with email and password
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email: { type: string }
+                password: { type: string }
+      responses:
+        '200':
+          description: Token stub and user info
+
+  /api/products:
+    get:
+      summary: List products
+      parameters:
+        - in: query
+          name: category
+          schema: { type: string }
+        - in: query
+          name: search
+          schema: { type: string }
+      responses:
+        '200': { description: 'Array of products' }
+    post:
+      summary: Create product
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Product'
+      responses:
+        '200': { description: 'Created product' }
+
+  /api/products/{id}:
+    get:
+      summary: Get product by id
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema: { type: string }
+      responses:
+        '200': { description: 'Product object with reviews' }
+    put:
+      summary: Update product
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema: { type: string }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Product'
+      responses:
+        '200': { description: 'Updated product' }
+    delete:
+      summary: Delete product
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema: { type: string }
+      responses:
+        '200': { description: 'Deletion result' }
+
+  /api/cart/{userId}:
+    get:
+      summary: Get cart for user
+      parameters:
+        - in: path
+          name: userId
+          required: true
+          schema: { type: string }
+      responses:
+        '200': { description: 'Cart items array' }
+    post:
+      summary: Add item to cart
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                productId: { type: string }
+                quantity: { type: integer }
+      responses:
+        '200': { description: 'Updated cart' }
+
+  /api/orders:
+    post:
+      summary: Create order (checkout)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                userId: { type: string }
+                items: { type: array, items: { type: object } }
+                finalAmount: { type: number }
+      responses:
+        '200': { description: 'Created order' }
+
+components:
+  schemas:
+    Product:
+      type: object
+      properties:
+        id: { type: string }
+        name: { type: string }
+        description: { type: string }
+        price: { type: number }
+        originalPrice: { type: number }
+        discountPercentage: { type: number }
+        category: { type: string }
+        brand: { type: string }
+        images:
+          type: array
+          items: { type: string }
+        stock: { type: integer }
+        rating: { type: number }
+        reviewsCount: { type: integer }

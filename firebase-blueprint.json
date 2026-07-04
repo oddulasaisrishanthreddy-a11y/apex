@@ -1,0 +1,179 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "User accounts and store register entities.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "email": { "type": "string" },
+        "role": { "type": "string" },
+        "isVerified": { "type": "boolean" },
+        "createdAt": { "type": "string" },
+        "storeName": { "type": "string" }
+      },
+      "required": ["id", "name", "email", "role"]
+    },
+    "Product": {
+      "title": "Product",
+      "description": "Catalog items and specs list.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "price": { "type": "number" },
+        "stock": { "type": "integer" },
+        "sellerId": { "type": "string" },
+        "approved": { "type": "boolean" }
+      },
+      "required": ["id", "name", "price", "stock"]
+    },
+    "Order": {
+      "title": "Order",
+      "description": "Client order tracking cards.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "orderNumber": { "type": "string" },
+        "userId": { "type": "string" },
+        "finalAmount": { "type": "number" },
+        "status": { "type": "string" },
+        "paymentStatus": { "type": "string" }
+      },
+      "required": ["id", "orderNumber", "userId", "finalAmount", "status"]
+    },
+    "Address": {
+      "title": "Address",
+      "description": "Delivery destinations for users.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "fullName": { "type": "string" },
+        "phone": { "type": "string" },
+        "street": { "type": "string" }
+      },
+      "required": ["id", "userId", "fullName", "street"]
+    },
+    "Wallet": {
+      "title": "Wallet",
+      "description": "Seller wallet balance trackers.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "balance": { "type": "number" }
+      }
+    },
+    "Cart": {
+      "title": "Cart",
+      "description": "In-flight carts for buyer sessions.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" }
+      }
+    },
+    "Wishlist": {
+      "title": "Wishlist",
+      "description": "Buyer product bookmark boards.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" }
+      }
+    },
+    "Review": {
+      "title": "Review",
+      "description": "User star rating feedback cards.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "productId": { "type": "string" },
+        "userId": { "type": "string" },
+        "rating": { "type": "integer" }
+      }
+    },
+    "Question": {
+      "title": "Question",
+      "description": "Product questions and answers.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "productId": { "type": "string" }
+      }
+    },
+    "DbNotification": {
+      "title": "DbNotification",
+      "description": "System database broadcast messages.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" }
+      }
+    },
+    "Banner": {
+      "title": "Banner",
+      "description": "Homepage advertisement banners.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" }
+      }
+    },
+    "PlatformCommissions": {
+      "title": "PlatformCommissions",
+      "description": "Commissions log.",
+      "type": "object",
+      "properties": {
+        "adminCommissionBalance": { "type": "number" }
+      }
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "Platform registration cards"
+    },
+    "/products/{productId}": {
+      "schema": "Product",
+      "description": "Store electronic items"
+    },
+    "/orders/{orderId}": {
+      "schema": "Order",
+      "description": "Core checkout orders list"
+    },
+    "/addresses/{addressId}": {
+      "schema": "Address",
+      "description": "Default shipping options"
+    },
+    "/wallets/{walletId}": {
+      "schema": "Wallet",
+      "description": "Store finances maps"
+    },
+    "/carts/{cartId}": {
+      "schema": "Cart",
+      "description": "Shopping bags"
+    },
+    "/wishlists/{wishlistId}": {
+      "schema": "Wishlist",
+      "description": "Staged items"
+    },
+    "/reviews/{reviewId}": {
+      "schema": "Review",
+      "description": "Ratings"
+    },
+    "/questions/{questionId}": {
+      "schema": "Question",
+      "description": "Customer doubts"
+    },
+    "/db_notifications/{notifId}": {
+      "schema": "DbNotification",
+      "description": "System bulletins"
+    },
+    "/banners/{bannerId}": {
+      "schema": "Banner",
+      "description": "Advert campaigns"
+    },
+    "/platform/{platformId}": {
+      "schema": "PlatformCommissions",
+      "description": "Financial summaries"
+    }
+  }
+}

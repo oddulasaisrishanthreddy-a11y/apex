@@ -1,0 +1,10 @@
+{
+  "name": "Remix: Remix: Apex E-Commerce Platform",
+  "description": "A high-performance modern e-commerce platform with a customer-centric frontend and a rich admin panel, complete with order workflow, simulated Stripe and Razorpay checkouts, and a Gemini-powered AI chatbot support agent.",
+  "requestFramePermissions": [
+    "geolocation"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

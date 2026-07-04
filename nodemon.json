@@ -1,0 +1,13 @@
+{
+  "watch": ["server.ts", "src/"],
+  "ext": "ts,js,json",
+  "ignore": [
+    "node_modules",
+    "dist",
+    ".database",
+    "database_state.json",
+    "database_state_backup.json",
+    "*.json",
+    "*.tmp"
+  ]
+}
