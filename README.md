@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Apex E‑Commerce Platform (Remix Mockup)
 
 Lightweight e‑commerce example combining a Vite React frontend with a small Node/Express dev server.
@@ -91,3 +92,7 @@ View your app in AI Studio: https://ai.studio/apps/8d1c1101-671b-46da-9ad4-8b040
 2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
 3. Run the app:
    `npm run dev`
+=======
+# apex
+Apex E-Commerce is a full-stack demo for online stores with a Vite + React frontend and a TypeScript Express backend. It includes product catalogs, cart, checkout, seller wallets, and order management using local JSON storage, with optional Firebase and GenAI integration. Ideal for learning and building production-ready e-commerce apps.
+>>>>>>> 805b114390d225ed9c58552212bae98ad1d15ce6
